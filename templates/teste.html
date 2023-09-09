@@ -1,56 +1,184 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/teste.css">
-    <title>Login</title>
-</head>
-<body>
-    <div class="main-lg">
-        <div class="left-lg">
-            <h1>Faça o login<br>E entre para o nosso Time</h1>
-            <img src="/static/alunos.svg" class="left-alunos" alt="alunos animados">
-        </div>
-        <form action="/login" method="post">
-            {{form.csrf_token}}
-            
-            <div class="right-lg">
-                <div class="card-lg">
-                    <div>
-                        <a class="link-cada" href="{{url_for('escolha')}}">Cadastre-se aqui</a>
-                     </div>
-                     <br>
-                    <h1>LOGIN</h1>
-                    <div class="textfield">
-                        <label for="Usuário">Usuário</label>
-                        <input type="text" name="email" placeholder="Usuário" required>
-                    </div>
-            
-                    <div class="textfield">
-                        <label for="Senha">Senha</label>
-                        <input type="password" name="senha" placeholder="Senha" required>
-                    </div>
-                    <button class="btn-lg" type="submit">Login</button>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Open+Sans:wght@300;400;500;600&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+body *{
+    box-sizing: border-box;
+}
+
+.main-lg {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: #6495ED;
+
+}
+.left-lg {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+.left-lg > h1{
+    font-size: 3vw;
+    color: #000080;
+    margin-bottom: 100px;
+
+}
+
+.left-alunos {
+    width: 25vw;
+}
+
+.btn-lg > h1{
+    color: #00008B;
+
+}
+.Cad-g {
+    width: 40%;
+    padding: 10px 0px;
+    margin: 25px;
+    border:none;
+    border-radius: 8px;
+    outline: none;
+    text-transform:uppercase ;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color:#1C1C1C;
+    background:#E0FFFF ;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #00ff8052;
+}
+
+.right-lg{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.esque-senha {
+    color: #E0FFFF;
+}
+
+.card-lg{
+    width: 60%;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 35px;
+    background: #000080;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #00BFFF;
+    
+}
+.card-lg > h1 {
+    color:#E0FFFF;
+    font-weight: 800;
+    margin: 0;
+
+}
+.textfield {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start ;
+    justify-content: center;
+    margin: 10px 0px;
 
 
-            
-                {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    {% for msg in messages %}
-                        <div class="flash">
-                            <h2>{{msg}}</h2>
-                        </div>
-                    {% endfor %}
-                {% endif %}
-                {% endwith %}
-                </form>
-              
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+}
+.textfield> input{
+    width: 100%;
+    border-radius: 10px;
+    padding: 15px;
+    border: none;
+    background: #E0FFFF;
+    color: #B0C4DE;
+    font-size: 12pt;
+    box-shadow: 0px 10px 40px #B0C4DE;
+    outline: none;
+    box-sizing: border-box;
 
+}
+.textfield > label {
+    color: #E0FFFF;
+    margin-bottom: 10px;
+}
+.textfield > input::placeholder{
+    color:#000000;
+
+
+}
+.btn-lg {
+    width: 40%;
+    padding: 10px 0px;
+    margin: 25px;
+    border:none;
+    border-radius: 8px;
+    outline: none;
+    text-transform:uppercase ;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color:#1C1C1C;
+    background:#E0FFFF ;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #00ff8052;
+    
+
+    
+
+}
+.link-cada {
+    color:aliceblue;
+    text-decoration: none;
+}
+
+.btn-esqueceu > h1 {
+    color: #00008B;
+}
+
+.btn-esqueceu {
+    width: 40%;
+    padding: 10px 0px;
+    margin: 25px;
+    border:none;
+    border-radius: 8px;
+    outline: none;
+    text-transform:uppercase ;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color:#1C1C1C;
+    background:#E0FFFF ;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #00ff8052;
+}
+@media only creen and (max-width: 950px){
+    .card-lg{
+        width: 85%;
+    }
+}
+@media only creen and (max-width: 600px){
+    .main-lg{
+        flex-direction: column;
+    }
+    .left-lg{
+        display: none;
+        height: auto;
+
+
+    }
+    .let.left-alunos{
+        width: 50wv;
+    }
+    .card-lg{
+        width: 50%;
+    }
+}
