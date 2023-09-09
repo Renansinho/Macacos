@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/teste.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="main-lg">
+        <div class="left-lg">
+            <h1>Faça o login<br>E entre para o nosso Time</h1>
+            <img src="/static/alunos.svg" class="left-alunos" alt="alunos animados">
+        </div>
+        <form action="/login" method="post">
+            {{form.csrf_token}}
+            
+            <div class="right-lg">
+                <div class="card-lg">
+                    <div>
+                        <a class="link-cada" href="{{url_for('escolha')}}">Cadastre-se aqui</a>
+                     </div>
+                     <br>
+                    <h1>LOGIN</h1>
+                    <div class="textfield">
+                        <label for="Usuário">Usuário</label>
+                        <input type="text" name="email" placeholder="Usuário" required>
+                    </div>
+            
+                    <div class="textfield">
+                        <label for="Senha">Senha</label>
+                        <input type="password" name="senha" placeholder="Senha" required>
+                    </div>
+                    <button class="btn-lg" type="submit">Login</button>
+
+
+            
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for msg in messages %}
+                        <div class="flash">
+                            <h2>{{msg}}</h2>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+                </form>
+              
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

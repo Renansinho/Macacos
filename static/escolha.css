@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+body {
+    background-color: #6495ED;
+    color: white; /* Define a cor do texto para branco */
+    font-family: Poppins, sans-serif; /* Define a fonte do texto */
+
+
+}
+body *{
+    box-sizing: border-box;
+}
+
+.main-escolha {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: #6495ED;
+    font-family: Poppins, sans-serif;
+
+}
+.left-escolha {
+    font-size: 4vw;
+    color: #000080;
+    margin-bottom: 100px;
+    height: 30%;
+    margin-left: 10%;
+    font-family: Poppins, sans-serif;
+    align-items: center;
+
+}
+.left-escolha > h1{
+    font-size: 3vw;
+    color: #000080;
+    margin-bottom: 100px;
+
+}
+
+.right-escolha{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Poppins, sans-serif;
+}
+.left-alunos {
+    width: 25vw;
+}
+
+
+.botao_escolha_estag {
+    width: 150%;
+    padding: 30px 0px;
+    margin: 30px;
+    border:none;
+    border-radius: 8px;
+    outline: none;
+    text-transform:uppercase ;
+    font-weight: 1000;
+    letter-spacing: 3px;
+    color:#E0FFFF;
+    background: #000080 ;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #00ff8052;
+    font-family: Poppins, sans-serif;
+    text-decoration: None;
+}
+.botao_escolha_empr {
+    width: 150%;
+    text-decoration: None;
+    padding: 30px 0px;
+    margin: 30px;
+    border:none;
+    border-radius: 8px;
+    outline: none;
+    text-transform:uppercase ;
+    font-weight: 1000;
+    letter-spacing: 3px;
+    color:#E0FFFF;
+    background: #000080 ;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #00ff8052;
+    font-family: Poppins, sans-serif;
+}
+@media only creen and (max-width: 950px){
+    .card-escolha{
+        width: 85%;
+    }
+}
+@media only creen and (max-width: 600px){
+    .main-escolha{
+        flex-direction: column;
+    }
+    .left-escolha{
+        display: none;
+        height: auto;
+
+
+    }
+    .let.left-alunos{
+        width: 50wv;
+    }
+    .card-escolha{
+        width: 50%;
+    }
+}

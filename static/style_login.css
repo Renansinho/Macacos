@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+}
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom,#f5f5f5, #505050);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', comic sans;
+}
+
+.card {
+    width: 1000%;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000000;
+    flex-direction: column;
+    padding: 30px 35px;
+    border-radius: 20px;
+    box-shadow: 0px 18px 40px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Center the content inside the card */
+    font-family: 'Poppins', comic sans;
+
+}
+.card h1,
+.card h2 {
+    color: #f3f3f3;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+
+.textfield {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+.textfield input {
+    width: 100%;
+    max-width: 400px;
+    border: none;
+    border-radius: 100px;
+    padding: 15px;
+    background: #f1f1f1;
+    color: #333333;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    outline: none;
+    box-sizing: border-box;
+    transition: background-color 200ms ease-in-out;
+}
+
+.textfield input::placeholder {
+    color: #999999;
+}
+
+.textfield input:focus {
+    background-color: #ffffff;
+}
+
+.textfield label {
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; 
+}
+
+.btn {
+    display: block;
+    width: 200px;
+    padding: 16px 0px;
+    border: none;
+    border-radius: 50px; /* Rounded corners */
+    outline: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #ffffff;
+    background: #dec11d;
+    cursor: pointer;
+    box-shadow: 0px 18px 40px rgba(245, 247, 99, 0.2);
+    transition: transform 200ms ease-in-out, background-color 200ms ease-in-out;
+    text-align: center;
+    margin: 10px;
+}
+
+.btn-cad_emp {
+    color: #ebe7e6;
+    background: transparent;
+    border: 2px solid #FFD700;
+    padding: 12px;
+    width: 200px; /* Ajuste a largura do botão */
+    text-align: center;
+    margin: 20px auto; /* Centralize o botão horizontalmente */
+    border-radius: 20px;
+    box-shadow: 0px 18px 60px -12px #444442;
+    transition: .35s;
+    cursor: pointer;
+}
+
+.btn-cad_emp a {
+    text-decoration: none;
+    color: rgb(247, 247, 243);
+    font-weight: bold;
+}
+
+.btn-cad_emp:hover,
+.btn-cad_emp:focus { 
+    color: #ffd900;
+    background: #ffd900;
+    opacity: 0.9; /* Ajuste a opacidade */
+    transform: scale(1.05);
+}
+
+.btn-cad_estag {
+    color: #ebe7e6;
+    background: transparent;
+    border: 3px solid #FFD700;
+    padding: 12px;
+    width: 200px; /* Ajuste a largura do botão */
+    text-align: center;
+    margin: 20px auto; /* Centralize o botão horizontalmente */
+    border-radius: 20px;
+    box-shadow: 0px 18px 60px -12px #444442;
+    transition: .35s;
+    cursor: pointer;
+}
+
+.btn-cad_estag a {
+    text-decoration: none;
+    color: rgb(247, 247, 247);
+    font-weight: bold;
+}
+
+.btn-cad_estag:hover,
+.btn-cad_estag:focus { 
+    color: #ffd900;
+    background: #ffd900;
+    opacity: 0.9; /* Ajuste a opacidade */
+    transform: scale(1.05);
+}
+.btn-cad_esq {
+    color: #ebe7e6;
+    background: transparent;
+    border: 2px solid #FFD700;
+    padding-bottom: 60px;
+    padding-top: 20px;
+    border-radius: 20px;
+    transition: .35s;
+    cursor: pointer;
+    padding: 12px;
+    width: 23vh;
+}
+
+.btn-cad_esq a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.btn-cad_esq:hover,
+.btn-cad_esq:focus { 
+    color: #ffd900;
+    background: #ffd900;
+    opacity: 4;
+    transform: scale(0.9);
+}
+
+.btn-log {
+    display: block;
+    width: 200px;
+    padding: 16px 0px;
+    border: none;
+    border-radius: 50px; 
+    outline: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 5px;
+    color: #000000;
+    background: #FFD700;
+    cursor: pointer;
+    box-shadow: 0px 18px 40px rgba(0, 0, 0, 0.2);
+    transition: transform 200ms ease-in-out, background-color 200ms ease-in-out;
+    text-align: center;
+    margin: 20px 10px; 
+}
+.vc_e{
+    width: 200px;
+    padding-bottom: 20px;
+}
+
+.botao_emp{
+    padding: 10px;
+}
+
+.espaco{
+    padding: 5px;
+}
+
+
+
+
+
+
+
+
+
+
