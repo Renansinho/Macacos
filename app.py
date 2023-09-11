@@ -8,7 +8,7 @@ from autenticacao.autenticacao_dao import estagiarios, Cliente
 app=Flask(__name__)#criação da aplicação flask
 app.config['SECRET_KEY'] = "Maqueicous" #A 'SECRET_KEY' é usada para proteger os dados da sessão e outras coisas sensíveis
 """app.register_blueprint(autenticacao_bp)
-app.register_blueprint(alunos_bp)
+app.register_blueprint(alunos_bp)g
 """
 
 
@@ -40,14 +40,14 @@ class RegistroForm(FlaskForm):
     senha_esta= PasswordField("senha_esta", validators=[DataRequired(),Length(min=4)])
     nome_esta = StringField("nome_esta", validators=[DataRequired()])
     sobrenome_esta = StringField ("sobrenome_esta", validators=[DataRequired()])
-    tel_esta = StringField("tel_esta", validators=[DataRequired()])
-    gender = StringField('genero_esta', validators=[DataRequired()])
+    tel_esta = StringField("tel_esta", validators=[DataRequired(), Length(max=11)])
+    genero_esta = StringField('genero_esta', validators=[DataRequired()])
 
 def buscar_esta_cadastrado(email_acad):
     for dado in estagiarios:
         if dado.email_acad == email_acad:
             return dado
-    
+   
     return None
 
 def criar_cadastro_esta(usuario):
@@ -85,15 +85,15 @@ def cadastro():
             return redirect(url_for("login"))
         except:
             flash("Usuário já cadastrado")
-            return render_template("cadastro_empr.html")
+            return render_template("cadastro_esta.html", form=registroform)
+    return render_template("cadastro_esta.html", form=registroform)
 
-    
 
-def buscar_usuario(email): #função para verificar se o usuario já está cadastrado
+def buscar_usuario(email): #função para veyrificar se o usuario já está cadastrado
     for estagiario in estagiarios: #buscar usuario para saber se ele já ta cadastrado
     
-        if estagiario.email_acad == email:#se o email queeu forneci no login é igual a um deles que está na lista
-            return estagiario #vai retornar os dados do estagiário no código
+        if estagiario.email_acad == email:                                      #se o email queeu forneci no login é igual a um deles que está na lista
+            return estagiario                                                        #vai retornar os dados do estagiário no código
     
     return None #se colocar o return none dentro na identação vários emails irão dar errado ao acontecer o login, por isso que tem q ser fora
 
@@ -145,7 +145,7 @@ def login():
 
 @app.route("/catalogo")
 def catalogo():
-    if session.get("Usuario",None):
+    if session.get("Usuario",None):   #função só permite que usuario entre no catalogo se ele já estiver logado
         return render_template("catalogo_empr.html")
     flash("Faça o login!")
     return redirect(url_for("login"))
@@ -161,7 +161,7 @@ def cadastro_empr():
 
 
 @app.route("/esta_cadastrado")
-def cadastrado():88
+def cadastrado():
     if session.get("Cliente", None):
         return render_template("teste.html")
     flash("Cadastre-se corretamente")

@@ -169,6 +169,13 @@ body {
     color: #fff;
 }
 
+.message-flash{
+    color: blue;
+    font-size: 2opx;
+    text-decoration: None;
+    
+}
+
 @media screen and (max-width: 1330px) {
     .form-image {
         display: none;

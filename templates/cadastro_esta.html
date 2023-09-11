@@ -16,7 +16,7 @@
         </div>
         <div class="form">
             <form action="/cadastro_esta" method="post">
-                {{form.crsf_token}}
+                {{form.csrf_token}}
                 <div class="form-header">
                     <div class="title">
                         <h1>Cadastre-se</h1>
@@ -55,7 +55,7 @@
                     
 
                 </div>
-
+              
                 <div class="gender-inputs">
                     <div class="gender-title">
                         <h6>Gênero</h6>
@@ -63,24 +63,21 @@
 
                     <div class="gender-group">
                         <div class="gender-input">
-                            <input id="female" type="radio" name="gender">
+                            <input id="female" type="radio" name="genero_esta" required>
                             <label for="female">Feminino</label>
                         </div>
 
                         <div class="gender-input">
-                            <input id="male" type="radio" name="gender">
+                            <input id="male" type="radio" name="genero_esta" required>
                             <label for="male">Masculino</label>
                         </div>
 
                         <div class="gender-input">
-                            <input id="others" type="radio" name="gender">
+                            <input id="others" type="radio" name="genero_esta" required>
                             <label for="others">Outros</label>
                         </div>
 
-                        <div class="gender-input">
-                            <input id="none" type="radio" name="gender">
-                            <label for="none">Prefiro não dizer</label>
-                        </div>
+                      
                     </div>
                 </div>
 
@@ -88,6 +85,13 @@
                     <button type="submit" >Cadastrar-se</button>
                 </div>
             </form>
+            {% with messages = get_flashed_messages()%}
+                    {%if messages %}
+                        {%for message in messages%}
+                            <li class="message-flash">{{message}}</li>
+                        {%endfor%}
+                    {%endif%}
+            {%endwith%}
         </div>
     </div>
 </body>

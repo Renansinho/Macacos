@@ -17,7 +17,9 @@ class Cliente:
 
 estagiarios = [
     Cliente('ribeiro.renan@academico.ifpb.edu.br', '1234', '08731693440', '83981819023', '90.3', 'awdoak')
+    
 ]#"base de dados" temporária
+
 
 
 def buscar_usuario_por_login(login):
