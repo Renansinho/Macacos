@@ -7,16 +7,16 @@ class Usuario:
 
 
 class Cliente: 
-    def __init__(self, email_acad, senha_esta, nome_esta, sobrenome_esta, tel_esta, genero_esta):
+    def __init__(self, email_acad, senha_esta, nome_esta, cpf, tel_esta, genero_esta):
         self.email_acad = email_acad
         self.senha_esta = senha_esta
         self.nome_esta = nome_esta
-        self.sobrenome_esta = sobrenome_esta
+        self.cpf = cpf
         self.tel_esta = tel_esta
         self.genero_esta = genero_esta
 
 estagiarios = [
-    Cliente('ribeiro.renan@academico.ifpb.edu.br', '1234', '08731693440', '83981819023', '90.3', 'awdoak')
+    Cliente('ribeiro.renan@academico.ifpb.edu.br', '1234', 'Renan Ribeiro Silba', '08731693440', '83981819023', 'Masculino')
     
 ]#"base de dados" temporária
 

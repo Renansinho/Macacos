@@ -7,9 +7,7 @@ from autenticacao.autenticacao_dao import estagiarios, Cliente
 
 app=Flask(__name__)#criação da aplicação flask
 app.config['SECRET_KEY'] = "Maqueicous" #A 'SECRET_KEY' é usada para proteger os dados da sessão e outras coisas sensíveis
-"""app.register_blueprint(autenticacao_bp)
-app.register_blueprint(alunos_bp)g
-"""
+
 
 
 class Empresa:
@@ -39,7 +37,7 @@ class RegistroForm(FlaskForm):
     email_acad = StringField("email_acad", validators=[DataRequired()])
     senha_esta= PasswordField("senha_esta", validators=[DataRequired(),Length(min=4)])
     nome_esta = StringField("nome_esta", validators=[DataRequired()])
-    sobrenome_esta = StringField ("sobrenome_esta", validators=[DataRequired()])
+    cpf = StringField ("cpf", validators=[DataRequired(), Length(max=11)])
     tel_esta = StringField("tel_esta", validators=[DataRequired(), Length(max=11)])
     genero_esta = StringField('genero_esta', validators=[DataRequired()])
 
@@ -74,7 +72,7 @@ def cadastro():
             registroform.email_acad.data,
             registroform.senha_esta.data,
             registroform.nome_esta.data,
-            registroform.sobrenome_esta.data,
+            registroform.cpf.data,
             registroform.tel_esta.data,
             registroform.genero_esta.data, 
         )
@@ -167,14 +165,7 @@ def cadastrado():
     flash("Cadastre-se corretamente")
     return redirect(url_for("cadastro_esta"))
 
-@app.route("/v")
-def ver(): #função para ver o usuário cadastrado
-    texto = ""
-    for estagiario in estagiarios:
-        texto += f"|email {estagiario.email_acad}"
-    return texto
+
 
 if __name__=='__main__':
     app.run(debug=False)
-#serve para verificar se a aplicação está 
-# sendo rodada diretamente como um programa principal 

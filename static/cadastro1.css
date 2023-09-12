@@ -173,28 +173,8 @@ body {
     color: blue;
     font-size: 2opx;
     text-decoration: None;
+    
 }
-
-/* Animação que faz vibrar */
-@keyframes shake {
-    0% { transform: translateX(0); }
-    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-    20%, 40%, 60%, 80% { transform: translateX(5px); }
-    100% { transform: translateX(0); }
-}
-
-.vibrar {
-    animation: shake 0.5s;
-}
-
-.msg-erro {
-    top: 75%;
-}
-
-.quadradoC {
-    margin-top: 8%;
-}
-
 
 @media screen and (max-width: 1330px) {
     .form-image {

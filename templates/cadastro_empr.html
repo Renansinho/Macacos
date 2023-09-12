@@ -4,50 +4,90 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/style_cadastro.css">
-    <title>cadastro_empr</title>
+    <link rel="stylesheet" href="/static/cadastro2.css">
+    <title>Cadastro de empresa</title>
 </head>
 <body>
-    <div class="main">
-        <div class="card">
-            <h1><strong>Cadastre-se</strong> <br> nova empresa</h1>
-            <div class="textfield">
-                <label for="nome">nome:</label>
-                <input type="text" nome="nome" placeholder="Digite o seu nome">
-            </div>
-            <div class="textfield">
-                <label for="cnpj">CNPJ:</label>
-                <input type="tel" nome="cnpj" placeholder="00.000.000/0000-00" onkeyup="validaCnpj()">
-            </div>
-            <div class="textfield">
-                <label for="e-mail">E-mail:</label>
-                <input type="email" nome="e-mail" placeholder="Digite o seu e-mail">
-            </div>
-            <div class="textfield">
-                <label for="senha">Senha:</label>
-                <input type="password" nome="senha" placeholder="Digite a sua senha">
-            </div>
-            <div class="textfield">
-                <label for="telefone">Telefone:</label>
-                <input type="tel" nome="telefone" placeholder="(00) 00000-000">
-            </div>
-            <div class="textfield">
-                <label for="cep">cep:</label>
-                <input id="cep" type="text" name="cep" placeholder="00000-000">
-            </div>
-            <div class="textfield">
-                <label for="cert_prem">Certificados e Premiações:</label>
-                <input type="file" name="cert_prem">
-            </div>
-            <button class="btn">Cadastre-se</button>
+    <div class="cont">
+        <div class="imagemzinha">
+            <img src="static/imagem.svg" alt="Imagem">
         </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
-    <script>
-        $('#telefone').mask('(00) 0000-0000');
-        $('#cnpj').mask('00.000.000/0000-00', {reverse: true});
-        $('#cep').mask('00000-000');
-    </script>
+        <div class="ponto1">
+            <form action="@">
+            <div class="titulo">
+                <h1>Cadastre-se</h1>
+                <div class="login-buttonn">
+                        <button><a href="login">Entrar</a></button>
+                        </div>
+            </div>
+
+                <div class="input-groupp">
+                     <div class="input-boxx">
+                        <label for="firstname">Nome da Empresa</label>
+                        <input id="firstname" type="text" name="nome" placeholder="Digite o nome da empresa" required>
+                        </div>
+
+            <div class="input-boxx">
+                <label for="lastname">CNPJ</label>
+                <input id="lastname" type="text" name="CNPJ" placeholder="Digite seu CNPJ" required>
+            </div>
+            <div class="input-boxx">
+                <label for="email">E-mail</label>
+                <input id="email" type="email" name="email_acad" placeholder="Digite seu e-mail" required>
+            </div>
+
+            <div class="input-boxx">
+                <label for="number">Celular</label>
+                <input id="number" type="tel" name="tel" placeholder="(xx) xxxx-xxxx" required>
+            </div>
+
+            <div class="input-boxx">
+                <label for="password">Senha</label>
+                <input id="password" type="password" name="senha" placeholder="Digite sua senha" required>
+            </div>
+
+
+            <div class="input-boxx">
+                <label for="confirmPassword">Confirme sua Senha</label>
+                <input id="confirmPassword" type="password" name="senha" placeholder="Digite sua senha novamente" required>
+            </div>
+
+        </div>
+
+        <div class="gender-inputss">
+            <div class="gender-titlee">
+                <h6>Tipo de empresa:</h6>
+            </div>
+
+            <div class="gender-groupp">
+                <div class="gender-inputt">
+                    <input id="female" type="radio" name="empresa">
+                    <label for="Empresa individual">Empresa Individual</label>
+                </div>
+
+                <div class="gender-inputt">
+                    <input id="eirele" type="radio" name="empresa">
+                    <label for="eire">EIRELI</label>
+                </div>
+
+                <div class="gender-inputt">
+                    <input id="MEI" type="radio" name="empresa">
+                    <label for="mei">Microoemprededor Individual (MEI)</label>
+                </div>
+
+                <div class="gender-inputt">
+                    <input id="others" type="radio" name="empresa">
+                    <label for="none">Outros</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="continue-buttonn">
+            <button><a href="login.html">Continuar</a> </button>
+        </div>
+    </form>
+</div>
+</div>
 </body>
 </html>
+            

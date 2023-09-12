@@ -63,9 +63,6 @@ body *{
     justify-content: center;
     align-items: center;
 }
-.esque-senha {
-    color: #E0FFFF;
-}
 
 .card-lg{
     width: 60%;
@@ -141,25 +138,6 @@ body *{
     text-decoration: none;
 }
 
-.btn-esqueceu > h1 {
-    color: #00008B;
-}
-
-.btn-esqueceu {
-    width: 40%;
-    padding: 10px 0px;
-    margin: 25px;
-    border:none;
-    border-radius: 8px;
-    outline: none;
-    text-transform:uppercase ;
-    font-weight: 800;
-    letter-spacing: 3px;
-    color:#1C1C1C;
-    background:#E0FFFF ;
-    cursor: pointer;
-    box-shadow: 0px 10px 40px -12px #00ff8052;
-}
 @media only creen and (max-width: 950px){
     .card-lg{
         width: 85%;
