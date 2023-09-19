@@ -3,7 +3,7 @@ class Usuario:
         self.login = login
         self.senha = senha
         self.nome = nome
-        self.papel = papel
+        self.papel = papel   
 
 
 class Cliente: 
