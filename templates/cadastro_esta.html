@@ -14,7 +14,7 @@
             <img src="static/imagem.svg" alt="Imagem">
         </div>
         <div class="form">
-            <form action="/cadastro_esta" method="post">
+            <form id="form-valida" action="/cadastro_esta" method="post">
                 {{form.csrf_token}}
                 <div class="form-header">
                     <div class="title">
@@ -42,7 +42,7 @@
 
                     <div class="input-box">
                         <label for="number">Celular</label>
-                        <input id="tel_esta" type="tel" name="tel_esta" maxlength="14"   placeholder="(xx) xxxx-xxxx" required>
+                        <input id="tel_esta" type="tel" name="tel_esta" maxlength="11"   placeholder="(xx) xxxx-xxxx" required>
                     </div>
 
                     <div class="input-box">
@@ -62,20 +62,23 @@
 
                     <div class="gender-group">
                         <div class="gender-input">
-                            <input id="female" type="radio" name="genero_esta" required>
+                            <input id="female" type="radio" name="genero_esta" value="female" >
                             <label for="female">Feminino</label>
                         </div>
-
+                        
                         <div class="gender-input">
-                            <input id="male" type="radio" name="genero_esta" required>
+                            <input id="male" type="radio" name="genero_esta" value="male" >
                             <label for="male">Masculino</label>
                         </div>
-
+                        
                         <div class="gender-input">
-                            <input id="others" type="radio" name="genero_esta" required>
+                            <input id="others" type="radio" name="genero_esta" value="others" >
                             <label for="others">Outros</label>
                         </div>
-
+                        
+                        
+                        
+                    
                       
                     </div>
                 </div>
@@ -93,7 +96,7 @@
                 {%endwith%}
         </div>
     </div>
-
+    <script src="/static/validacoes/validar_cpf.js"></script>
 </body>
 
 </html>

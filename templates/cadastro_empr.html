@@ -13,79 +13,89 @@
             <img src="static/imagem.svg" alt="Imagem">
         </div>
         <div class="ponto1">
-            <form action="@">
-            <div class="titulo">
-                <h1>Cadastre-se</h1>
-                <div class="login-buttonn">
+            <form action="/cadastro_empr", method="post">
+                   {{form.csrf_token}}
+                <div class="titulo">
+                    <h1>Cadastre-se</h1>
+                    <div class="login-buttonn">
                         <button><a href="login">Entrar</a></button>
                         </div>
-            </div>
+                </div>
 
                 <div class="input-groupp">
                      <div class="input-boxx">
                         <label for="firstname">Nome da Empresa</label>
-                        <input id="firstname" type="text" name="nome" placeholder="Digite o nome da empresa" required>
+                        <input id="nome_empresa" type="text" name="nome_empresa" placeholder="Digite o nome da empresa" required>
                         </div>
 
-            <div class="input-boxx">
-                <label for="lastname">CNPJ</label>
-                <input id="lastname" type="text" name="CNPJ" placeholder="Digite seu CNPJ" required>
-            </div>
-            <div class="input-boxx">
-                <label for="email">E-mail</label>
-                <input id="email" type="email" name="email_acad" placeholder="Digite seu e-mail" required>
-            </div>
-
-            <div class="input-boxx">
-                <label for="number">Celular</label>
-                <input id="number" type="tel" name="tel" placeholder="(xx) xxxx-xxxx" required>
-            </div>
-
-            <div class="input-boxx">
-                <label for="password">Senha</label>
-                <input id="password" type="password" name="senha" placeholder="Digite sua senha" required>
-            </div>
-
-
-            <div class="input-boxx">
-                <label for="confirmPassword">Confirme sua Senha</label>
-                <input id="confirmPassword" type="password" name="senha" placeholder="Digite sua senha novamente" required>
-            </div>
-
-        </div>
-
-        <div class="gender-inputss">
-            <div class="gender-titlee">
-                <h6>Tipo de empresa:</h6>
-            </div>
-
-            <div class="gender-groupp">
-                <div class="gender-inputt">
-                    <input id="female" type="radio" name="empresa">
-                    <label for="Empresa individual">Empresa Individual</label>
+                <div class="input-boxx">
+                    <label for="lastname">CNPJ</label>
+                    <input id="cnpj" type="text" name="cnpj" placeholder="Digite seu CNPJ" maxlength="17" required>
+                </div>
+                <div class="input-boxx">
+                    <label for="email">E-mail</label>
+                    <input id="email_empresa" type="email" name="email_empresa" placeholder="Digite seu e-mail" required>
                 </div>
 
-                <div class="gender-inputt">
-                    <input id="eirele" type="radio" name="empresa">
-                    <label for="eire">EIRELI</label>
+                <div class="input-boxx">
+                    <label for="number">Celular</label>
+                    <input id="tel_empresa" type="tel" name="tel_empresa" placeholder="(xx) xxxx-xxxx" maxlength="14" required>
                 </div>
 
-                <div class="gender-inputt">
-                    <input id="MEI" type="radio" name="empresa">
-                    <label for="mei">Microoemprededor Individual (MEI)</label>
+                <div class="input-boxx">
+                    <label for="password">Senha</label>
+                    <input id="senha_empresa" type="password" name="senha_empresa" placeholder="Digite sua senha" required>
                 </div>
 
-                <div class="gender-inputt">
-                    <input id="others" type="radio" name="empresa">
-                    <label for="none">Outros</label>
+                <div class="input-boxx">
+                    <label for="number">Cep</label>
+                    <input id="cep" type="text" name="cep_empresa" placeholder="Digite seu cep" maxlength="9" required>
                 </div>
+
+
+
+
+                </div>
+
+                <div class="gender-inputss">
+                <div class="gender-titlee">
+                    <h6>Tipo de empresa:</h6>
+                </div>
+
+                <div class="gender-groupp">
+                    <div class="gender-inputt">
+                        <input id="empreendedor_individual" type="radio" name="empresa">
+                        <label for="empreendedor_individual">Empresa Individual</label>
+                    </div>
+
+                    <div class="gender-inputt">
+                        <input id="eireli" type="radio" name="empresa">
+                        <label for="eireli">Eireli</label>
+                    </div>
+
+                    <div class="gender-inputt">
+                        <input id="mei" type="radio" name="empresa">
+                        <label for="mei">Microoemprededor Individual</label>
+                    </div>
+
+                    <div class="gender-inputt">
+                        <input id="empresa" type="radio" name="empresa">
+                        <label for="none">Outros</label>
+                    </div>
+                </div>
+                </div>
+
+            <div class="continue-buttonn">
+                <button type="submit">Continuar</button>
             </div>
-        </div>
-
-        <div class="continue-buttonn">
-            <button><a href="login.html">Continuar</a> </button>
-        </div>
     </form>
+          {% with messages = get_flashed_messages()%}
+                        {%if messages %}
+                            {%for message in messages%}
+                                <li class="message-flash">{{message}}</li>
+                            {%endfor%}
+                        {%endif%}
+                {%endwith%}
 </div>
 </div>
 </body>

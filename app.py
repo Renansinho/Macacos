@@ -1,31 +1,16 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, EmailField
+from wtforms import StringField, PasswordField, EmailField, RadioField
 from wtforms.validators import DataRequired, Length
 from autenticacao.autenticacao_service import autenticar, salvar_usuario
 from autenticacao.autenticacao_dao import estagiarios, Cliente
+from autenticacao.autenticacao_dao import empresas, Empresa
+from autenticacao.autenticacao_service import  autenticar_empresa, salvar_empresa 
+
 
 app=Flask(__name__)#criação da aplicação flask
 app.config['SECRET_KEY'] = "Maqueicous" #A 'SECRET_KEY' é usada para proteger os dados da sessão e outras coisas sensíveis
 
-
-
-class Empresa:
-    def __init__(self, cnpj, razao_social, email_empr, senha_empr, cep_empr, tel_empr, certificados_empr):
-        self.cnpj = cnpj
-        self.razao_social = razao_social
-        self.email_empr = email_empr
-        self.senha_empr = senha_empr
-        self.cep_empr = cep_empr
-        self.tel_empr = tel_empr
-        self.certificados_empr = certificados_empr
-
-
-        
-        
-empresas = [
-    Empresa('15245632521456', 'Mercadinho Renan', 'mercadinho.renan@gmail.com', 'renan321', '58300000', '83981819023', 'xxxxxxx')
-]
 
 
 
@@ -35,15 +20,34 @@ class LoginForm(FlaskForm):
 
 class RegistroForm(FlaskForm):
     email_acad = StringField("email_acad", validators=[DataRequired()])
-    senha_esta= PasswordField("senha_esta", validators=[DataRequired(),Length(min=4)])
+    senha_esta = PasswordField("senha_esta", validators=[DataRequired(), Length(min=4)])
     nome_esta = StringField("nome_esta", validators=[DataRequired()])
-    cpf = StringField ("cpf", validators=[DataRequired(), Length(max=11)])
+    cpf = StringField("cpf", validators=[DataRequired(), Length(max=14)])
     tel_esta = StringField("tel_esta", validators=[DataRequired(), Length(max=11)])
-    genero_esta = StringField('genero_esta', validators=[DataRequired()])
+    genero_esta = RadioField('Gênero', choices=[('female', 'Feminino'), ('male', 'Masculino'), ('others', 'Outros')])
 
-def buscar_esta_cadastrado(email_acad):
+class RegistroFormEmpresa(FlaskForm):
+    nome_empresa = StringField("nome_empresa", validators=[DataRequired()])
+    cnpj = StringField("cnpj", validators=[DataRequired(), Length(max=17)])
+    email_empresa = EmailField("email_empresa", validators=[DataRequired()])
+    tel_empresa = StringField("tel_empresa", validators=[DataRequired(), Length(max=14)])
+    senha_empresa = PasswordField("senha_empresa", validators=[DataRequired(), Length(min=4)])
+    cep_empresa = StringField("cep_empresa", validators=[DataRequired(), Length(max=9)])
+    empresa = RadioField('empresa', choices=[('empreendedor_individual', 'Empresa Individual'), ('eireli', 'Eireli'), ('mei', 'icrooemprededor Individual')])
+
+
+
+def buscar_esta_cadastrado(cpf):
     for dado in estagiarios:
-        if dado.email_acad == email_acad:
+        if dado.cpf == cpf:
+            return dado
+   
+    return None
+
+
+def buscar_empresa_cadastrada(cnpj):
+    for dado in empresas:
+        if dado.cnpj == cnpj:
             return dado
    
     return None
@@ -53,15 +57,56 @@ def criar_cadastro_esta(usuario):
     #Esta função recebe um objeto de usuário como entrada e o adiciona à lista estagiarios
 
 
-@app.route("/cadastro_esta", methods = ['GET', 'POST'])
+def criar_cadastro_esta(empresa):
+    empresas.append(empresa)
+
+
+@app.route("/cadastro_empr", endpoint="cadastro2", methods = ['GET', 'POST'])
+def cadastro_empr():
+    registroformempresa = RegistroFormEmpresa()
+    
+    if request.method == 'GET':
+        return render_template('cadastro_empr.html', form=registroformempresa)
+    
+    if request.method == 'POST':
+
+        if not registroformempresa.validate_on_submit():
+            flash("Dados obrigatorios não preenchidos")
+            return render_template("cadastro_empr.html", form=registroformempresa)
+        
+        empresa = Empresa(
+            registroformempresa.nome_empresa.data,
+            registroformempresa.cnpj.data,
+            registroformempresa.email_empresa.data,
+            registroformempresa.tel_empresa.data,
+            registroformempresa.senha_empresa.data,
+            registroformempresa.cep_empresa.data,
+            registroformempresa.empresa.data, 
+        )
+        try:
+            salvar_empresa(empresa)
+            flash("Empresa cadastrada com sucesso")
+            return redirect(url_for("login"))
+        except:
+            flash("Empresa já cadastrado")
+            return render_template("cadastro_empre.html", form=registroformempresa)
+    return render_template("cadastro_empr.html", form=registroformempresa)
+
+
+@app.route("/cadastro_esta", endpoint="cadastro1", methods = ['GET', 'POST'])
 def cadastro():
     registroform = RegistroForm() #Cria uma instância do formulário de registro 
     
     if request.method == 'GET':
         return render_template('cadastro_esta.html', form=registroform)
     
-    
     if request.method == 'POST':
+        print(registroform.email_acad.data,
+            registroform.senha_esta.data,
+            registroform.nome_esta.data,
+            registroform.cpf.data,
+            registroform.tel_esta.data,
+            registroform.genero_esta.data)
         if not registroform.validate_on_submit():
             flash("Dados obrigatorios não preenchidos")
             return render_template("cadastro_esta.html", form=registroform)
@@ -79,21 +124,30 @@ def cadastro():
 
         try:
             salvar_usuario(usuario)
-            flash("Usuário cadastrado com sucesso")
+            flash("Estagiário cadastrado com sucesso")
             return redirect(url_for("login"))
         except:
-            flash("Usuário já cadastrado")
+            flash("Estagiário já cadastrado")
             return render_template("cadastro_esta.html", form=registroform)
     return render_template("cadastro_esta.html", form=registroform)
 
 
-def buscar_usuario(email): #função para veyrificar se o usuario já está cadastrado
+def buscar_usuario(cpf): #função para veyrificar se o usuario já está cadastrado
     for estagiario in estagiarios: #buscar usuario para saber se ele já ta cadastrado
     
-        if estagiario.email_acad == email:                                      #se o email queeu forneci no login é igual a um deles que está na lista
+        if estagiario.cpf == cpf:                                      #se o email queeu forneci no login é igual a um deles que está na lista
             return estagiario                                                        #vai retornar os dados do estagiário no código
     
     return None #se colocar o return none dentro na identação vários emails irão dar errado ao acontecer o login, por isso que tem q ser fora
+
+def buscar_empresa(cnpj):
+    for empresa in empresas:
+        
+        if empresa.cnpj == cnpj:
+            return empresa
+    
+    return None
+
 
 def validar_login (email, senha): 
 
@@ -164,6 +218,13 @@ def cadastrado():
         return render_template("teste.html")
     flash("Cadastre-se corretamente")
     return redirect(url_for("cadastro_esta"))
+
+@app.route("/empr_cadastrada")
+def empr_cadastrada():
+    if session.get("Empresa", None):
+        return render_template("teste.html")
+    flash("Cadastre-se corretamente")
+    return redirect(url_for("cadastro_empr"))
 
 
 

@@ -3,7 +3,7 @@ class Usuario:
         self.login = login
         self.senha = senha
         self.nome = nome
-        self.papel = papel   
+        self.papel = papel
 
 
 class Cliente: 
@@ -20,7 +20,22 @@ estagiarios = [
     
 ]#"base de dados" temporária
 
+class Empresa:
+    def __init__(self, cnpj, nome_empresa, email_empresa, senha_empresa, cep_empresa, tel_empresa, empresa):
+        self.cnpj = cnpj
+        self.nome_empresa = nome_empresa
+        self.email_empresa = email_empresa
+        self.senha_empresa = senha_empresa
+        self.cep_empresa = cep_empresa
+        self.tel_empresa = tel_empresa
+        self.empresa = empresa
 
+
+        
+        
+empresas = [
+    Empresa('08308794000167', 'Mercadinho Renan', 'mercadinho.renan@gmail.com', 'renan321', '58300000', '83981819023', 'Eirele')
+]
 
 def buscar_usuario_por_login(login):
     for dado in estagiarios:
@@ -32,6 +47,15 @@ def buscar_usuario_por_login(login):
 # mesmo e-mail, ela retorna esse objeto Cliente.
     return None
 
+def buscar_empresa_por_login(login):
+    for dado in empresas:
+        if dado.cnpj == login:
+            return dado
+    return None        
 
 def criar(usuario):
     estagiarios.append(usuario)
+
+def criar_empresa(empresa):
+    empresas.append(empresa)    
+
