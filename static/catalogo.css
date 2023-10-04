@@ -44,7 +44,7 @@ header {
 }
 
 .logo h1{
-    color: #E0FFFF;
+    color: #ffffff;
 }
 
 .cabecalho-link {
@@ -77,12 +77,6 @@ header {
 
 }
 
-.last-text {
-    text-align: center;
-    background-color: #363636;
-    color: #E0FFFF;
-
-}
 
 .meio {
     padding: 7rem 0 0 8.5rem;
@@ -113,16 +107,23 @@ header {
     padding-top: 2rem;
 
 }
-.cards img{
-    width: 450px;
-    height: auto;
-    transition: 0.35s ease;
+
+.cards {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    text-align: center;
+    padding: 20px; /* You can adjust this padding as needed */
 }
 
-.cards img :hover{
+.cards img {
+    width: 250px;
+    height: auto;
+    transition: 0.35s ease;
+}
+
+.cards img:hover {
     transform: scale(0.9) translateY(5px);
     cursor: pointer;
 }
@@ -141,4 +142,23 @@ header {
     background-color:#E0FFFF ;
     cursor: pointer;
     box-shadow: 0px 10px 40px -12px #00000052;
+}
+
+/* Estilos para o rodapé */
+footer {
+    background-color: #333; /* Cor de fundo do rodapé */
+    color: #fff; /* Cor do texto do rodapé */
+    text-align: center; /* Centralizar o texto no rodapé */
+    padding: 20px 0; /* Espaçamento interno no rodapé (topo e base) */
+}
+
+.last-text {
+    max-width: 900px; /* Largura máxima do conteúdo do rodapé */
+    margin: 0 auto; /* Centralizar o conteúdo horizontalmente */
+}
+
+/* Estilos para o link no rodapé */
+footer a {
+    color: #fff; /* Cor dos links do rodapé */
+    text-decoration: none; /* Remover sublinhado dos links */
 }
