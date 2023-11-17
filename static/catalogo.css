@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Open+Sans:wght@300;400;500;600&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Inter, sans-serif;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+}
+
+.caixa {
+    background-image: url(img/background-image);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1rem;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    position: fixed;
+    transition: all .35s ease;
+    background-color:  #000082;
+    padding: 14px 14%;
+
+}
+.logo {
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.logo h1{
+    color: #ffffff;
+}
+
+.cabecalho-link {
+    display: flex;
+    gap: 3rem;
+
+}
+
+.cabecalho-link a{
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    transition: 0.3s;
+
+}
+
+.cabecalho-link :hover{
+    color: #000000;
+
+
+}
+
+.icon span {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+
+.icon span :hover {
+    color:#000080;
+
+}
+
+
+.meio {
+    padding: 7rem 0 0 8.5rem;
+    line-height: 4rem;
+
+}
+.meio h1 {
+    font-size: 4rem;
+
+}
+
+.section {
+    padding-left: 7rem;
+
+}
+.section h1 {
+    align-items: center;
+    text-align: center;
+    font-size: 2rem;
+
+}
+
+.container-card-1 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding-top: 2rem;
+
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px; /* You can adjust this padding as needed */
+}
+
+.cards img {
+    width: 250px;
+    height: auto;
+    transition: 0.35s ease;
+}
+
+.cards img:hover {
+    transform: scale(0.9) translateY(5px);
+    cursor: pointer;
+}
+
+.whats {
+    width: 30%;
+    padding: 10px 0px;
+    margin: 25px;
+    border:none;
+    border-radius: 8px;
+    outline: none;
+    text-transform:uppercase ;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-align: center;
+    background-color:#E0FFFF ;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #00000052;
+}
+
+/* Estilos para o rodapé */
+footer {
+    background-color: #333; /* Cor de fundo do rodapé */
+    color: #fff; /* Cor do texto do rodapé */
+    text-align: center; /* Centralizar o texto no rodapé */
+    padding: 20px 0; /* Espaçamento interno no rodapé (topo e base) */
+}
+
+.last-text {
+    max-width: 900px; /* Largura máxima do conteúdo do rodapé */
+    margin: 0 auto; /* Centralizar o conteúdo horizontalmente */
+}
+
+/* Estilos para o link no rodapé */
+footer a {
+    color: #fff; /* Cor dos links do rodapé */
+    text-decoration: none; /* Remover sublinhado dos links */
+}
