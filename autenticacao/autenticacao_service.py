@@ -1,8 +1,9 @@
 from autenticacao.autenticacao_dao import buscar_usuario_por_login, criar
 from autenticacao.autenticacao_dao import buscar_empresa_por_login, criar_empresa
 
-def autenticar(email_acad, senha_esta):
-    usuario = buscar_usuario_por_login(email_acad)#para tentar encontrar um usuário com o email especificado
+
+def autenticar(cpf_cnpj, senha_esta):
+    usuario = buscar_usuario_por_login(cpf_cnpj)#para tentar encontrar um usuário com o email especificado
 
     if usuario == None:
         raise Exception("Usuário não cadastrado")
@@ -12,8 +13,8 @@ def autenticar(email_acad, senha_esta):
 
 
 
-def autenticar_empresa (cnpj, senha_empresa):
-    empresa = buscar_empresa_por_login(cnpj)#para tentar encontrar um usuário com o email especificado
+def autenticar_empresa (cpf_cnpj, senha_empresa):
+    empresa = buscar_empresa_por_login(cpf_cnpj)#para tentar encontrar um usuário com o email especificado
 
     if empresa == None:
         raise Exception("Empresa não cadastrada")
@@ -24,20 +25,20 @@ def autenticar_empresa (cnpj, senha_empresa):
 
 
 def salvar_usuario(usuario):
-    dado = buscar_usuario_por_login(usuario.email_acad)
+    dado = buscar_usuario_por_login(usuario.cpf_cnpj)
 
     if dado != None:
-        raise Exception("Usuário já cadastrado")
+        raise Exception("Estagiário já cadastrado")
 
     criar(usuario)
 
 
 
 def salvar_empresa(empresa):
-    dado = buscar_empresa_por_login(empresa.cnpj)
+    deido = buscar_empresa_por_login(empresa.cpf_cnpj)
 
 
-    if dado!= None:
+    if deido != None:
         raise Exception("Empresa já cadastrada")
     
     criar_empresa(empresa)

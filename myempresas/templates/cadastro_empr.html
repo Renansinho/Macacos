@@ -13,7 +13,7 @@
             <img src="static/imagem.svg" alt="Imagem">
         </div>
         <div class="ponto1">
-            <form action="/cadastro_empr" method="post">
+            <form  id="cnpj-valida"action="/cadastro_empr" method="post">
                    {{form.csrf_token}}
                 <div class="titulo">
                     <h1>Cadastre-se</h1>
@@ -30,7 +30,7 @@
 
                 <div class="input-boxx">
                     <label for="lastname">CNPJ</label>
-                    <input id="cnpj" type="text" name="cnpj" placeholder="Digite seu CNPJ" maxlength="17" required>
+                    <input id="cpf_cnpj" type="text" name="cnpj" placeholder="Digite seu CNPJ"  required>
                 </div>
                 <div class="input-boxx">
                     <label for="email">E-mail</label>
@@ -79,8 +79,8 @@
                         </div>
 
                         <div class="gender-inputt">
-                            <input id="empresa" type="radio" name="empresa" value="empresa">
-                            <label for="none">Outros</label>
+                            <input id="other" type="radio" name="empresa" value="empresa">
+                            <label for="other">Outros</label>
                         </div>
                     </div>
                 </div>

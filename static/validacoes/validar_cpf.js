@@ -22,7 +22,7 @@ function TestaCPF(strCPF) {
 // Função para executar a validação do CPF antes de enviar o formulário
 function validarCPF() {
     // lembre de colocar o id do input que estiver o cpf
-    var cpfInput = document.getElementById('cpf');  
+    var cpfInput = document.getElementById('cpf_cnpj');  
     var strCPF = cpfInput.value.replace(/\D/g, ''); // Remove caracteres não numéricos
 
     if (!TestaCPF(strCPF)) {
