@@ -74,14 +74,6 @@ def buscar_empresa_cadastrada(cpf_cnpj):
    
     return None
 
-def criar_cadastro_esta(usuario):
-    estagiarios.append(usuario)
-    #Esta função recebe um objeto de usuário como entrada e o adiciona à lista estagiarios
-
-
-def criar_cadastro_empr(empresa):
-    empresas.append(empresa)
-
 def buscar_usuario(cpf_cnpj): #função para veyrificar se o usuario já está cadastrado
     for estagiario in estagiarios: #buscar usuario para saber se ele já ta cadastrado
     
