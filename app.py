@@ -6,13 +6,13 @@ from autenticacao.autenticacao_dao import buscar_usuario
 from autenticacao.autenticacao_dao import buscar_empresa
 from estagiarios.estag_rotas import estag_blueprint
 from myempresas.empr_rotas import empresas_blueprint
+from extensoes import db
 
 app=Flask(__name__)#criação da aplicação flask
-app.config['SECRET_KEY'] = "Maqueicous" #A 'SECRET_KEY' é usada para proteger os dados da sessão e outras coisas sensíveis
-
 app.register_blueprint(empresas_blueprint)
 app.register_blueprint(estag_blueprint)
 
+estagios = []
 
 class LoginForm(FlaskForm):
     cpf_cnpj = StringField("cpf_cnpj", validators=[DataRequired()])
@@ -107,9 +107,24 @@ def cada_empresa():
 def perfil_estagiario():
     return render_template("perfil_esta.html")
 
-@app.route("/perfil_empr")
+@app.route("/perfil_empresa")
 def perfil_empresa():
     return render_template("perfil_empr.html")
+
+@app.route("/estagiar")
+def estagiar ():
+
+    if not(session.get("Usuario") in estagios):
+        estagios.append(buscar_empresa(session.get("Usuario")))
+
+    print (estagios)
+    return redirect("/catalogo_empr")
+
+@app.route("/p")
+def p ():
+
+    return f"{estagios[0]}"
+
 
 if __name__=='__main__':
     app.run(debug=False)
