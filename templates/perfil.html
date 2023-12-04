@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Macacos-main/static/perfil.css">
+    <title>Perfil de Empresa</title>
+</head>
+<body>
+    <body>		
+        <div class="container">
+            <h1> Perfil </h1>
+            <p>Sou uma empresa altamente renomada</p>
+                <img class="avatar" src="avatar.jpg" alt="Avatar">	
+            
+            <div>
+                <h2>Detalhes</h2>
+                
+                <span class="negrito">Nome:</span> <p>{{perfil.nome_empresa }}</p>
+                <span class="negrito">CNPJ:</span> <p>{{perfil.cpf_cnpj}} </p>
+                <span class="negrito">E-mail:</span> <p>{{perfil.email_empresa}}</p>
+
+                <span class="negrito">Para saber mais sobre nós:</span>
+                <span class="negrito">Telefone:</span> <p>{{perfil.tel_empresa}}</p>
+            <p></p>
+            <form action="/estagiar"><button type="submit">Estagiar</button></form>
+            
+    
+        </div>
+        
+        
+        <!--Experimente por um filtro para deixar a imagem preto
+         e branca filter: grayscale(1); -->
+        </body>
+    </html>
