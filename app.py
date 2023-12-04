@@ -47,10 +47,6 @@ def cadastrado():
     flash("Cadastre-se corretamente")
     return redirect(url_for("cadastro_esta"))
 
-@app.route ("/contato")
-def contato():
-    return render_template("contato.html")
-
 def validar_login(cpf_cnpj, senha):
     usuario_encontrado = buscar_usuario(cpf_cnpj)  # Supondo que você tenha uma função buscar_usuario que busca tanto estagiários quanto empresas
     empresa_encontrada = buscar_empresa(cpf_cnpj)
@@ -103,13 +99,9 @@ def login():
 def cada_empresa():
     return render_template("cadastro_empr")
 
-@app.route("/perfil_estagiario")
-def perfil_estagiario():
-    return render_template("perfil_esta.html")
-
 @app.route("/perfil_empresa")
 def perfil_empresa():
-    return render_template("perfil_empr.html")
+    return render_template("perfil.html")
 
 @app.route("/estagiar")
 def estagiar ():
